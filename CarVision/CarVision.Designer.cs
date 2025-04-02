@@ -35,6 +35,7 @@
             this._comparePanel = new System.Windows.Forms.Panel();
             this.closeBtn = new System.Windows.Forms.Button();
             this._carLPanel = new System.Windows.Forms.Panel();
+            this.toRBtn = new System.Windows.Forms.Button();
             this.consumeL_Lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.capacityL_Lbl = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.brnoBtn = new System.Windows.Forms.Button();
             this.prahaBtn = new System.Windows.Forms.Button();
             this._carRPanel = new System.Windows.Forms.Panel();
+            this.toLBtn = new System.Windows.Forms.Button();
             this.consumeR_Lbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.capacityR_Lbl = new System.Windows.Forms.Label();
@@ -66,8 +68,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.destinationR_Btn = new System.Windows.Forms.Button();
             this.batteryR_Bx = new System.Windows.Forms.TextBox();
-            this.toRBtn = new System.Windows.Forms.Button();
-            this.toLBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.carL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carR)).BeginInit();
             this._comparePanel.SuspendLayout();
@@ -126,7 +126,7 @@
             this._comparePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._comparePanel.Location = new System.Drawing.Point(0, 0);
             this._comparePanel.Name = "_comparePanel";
-            this._comparePanel.Size = new System.Drawing.Size(818, 478);
+            this._comparePanel.Size = new System.Drawing.Size(818, 522);
             this._comparePanel.TabIndex = 4;
             // 
             // closeBtn
@@ -157,8 +157,18 @@
             this._carLPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._carLPanel.Location = new System.Drawing.Point(0, 0);
             this._carLPanel.Name = "_carLPanel";
-            this._carLPanel.Size = new System.Drawing.Size(818, 478);
+            this._carLPanel.Size = new System.Drawing.Size(818, 522);
             this._carLPanel.TabIndex = 5;
+            // 
+            // toRBtn
+            // 
+            this.toRBtn.Location = new System.Drawing.Point(716, 239);
+            this.toRBtn.Name = "toRBtn";
+            this.toRBtn.Size = new System.Drawing.Size(79, 53);
+            this.toRBtn.TabIndex = 22;
+            this.toRBtn.Text = "Switch to Rimac";
+            this.toRBtn.UseVisualStyleBackColor = true;
+            this.toRBtn.Click += new System.EventHandler(this.carR_Click);
             // 
             // consumeL_Lbl
             // 
@@ -281,7 +291,7 @@
             this._selectPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._selectPanel.Location = new System.Drawing.Point(0, 0);
             this._selectPanel.Name = "_selectPanel";
-            this._selectPanel.Size = new System.Drawing.Size(818, 478);
+            this._selectPanel.Size = new System.Drawing.Size(818, 522);
             this._selectPanel.TabIndex = 10;
             this._selectPanel.Visible = false;
             // 
@@ -376,8 +386,18 @@
             this._carRPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._carRPanel.Location = new System.Drawing.Point(0, 0);
             this._carRPanel.Name = "_carRPanel";
-            this._carRPanel.Size = new System.Drawing.Size(818, 478);
+            this._carRPanel.Size = new System.Drawing.Size(818, 522);
             this._carRPanel.TabIndex = 11;
+            // 
+            // toLBtn
+            // 
+            this.toLBtn.Location = new System.Drawing.Point(25, 257);
+            this.toLBtn.Name = "toLBtn";
+            this.toLBtn.Size = new System.Drawing.Size(79, 53);
+            this.toLBtn.TabIndex = 23;
+            this.toLBtn.Text = "Switch to Tesla";
+            this.toLBtn.UseVisualStyleBackColor = true;
+            this.toLBtn.Click += new System.EventHandler(this.carL_Click);
             // 
             // consumeR_Lbl
             // 
@@ -488,31 +508,11 @@
             this.batteryR_Bx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.batteryBx_KeyPress);
             this.batteryR_Bx.Leave += new System.EventHandler(this.batteryR_Bx_Leave);
             // 
-            // toRBtn
-            // 
-            this.toRBtn.Location = new System.Drawing.Point(716, 239);
-            this.toRBtn.Name = "toRBtn";
-            this.toRBtn.Size = new System.Drawing.Size(79, 53);
-            this.toRBtn.TabIndex = 22;
-            this.toRBtn.Text = "Switch to Rimac";
-            this.toRBtn.UseVisualStyleBackColor = true;
-            this.toRBtn.Click += new System.EventHandler(this.carR_Click);
-            // 
-            // toLBtn
-            // 
-            this.toLBtn.Location = new System.Drawing.Point(25, 257);
-            this.toLBtn.Name = "toLBtn";
-            this.toLBtn.Size = new System.Drawing.Size(79, 53);
-            this.toLBtn.TabIndex = 23;
-            this.toLBtn.Text = "Switch to Tesla";
-            this.toLBtn.UseVisualStyleBackColor = true;
-            this.toLBtn.Click += new System.EventHandler(this.carL_Click);
-            // 
             // CarVision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 478);
+            this.ClientSize = new System.Drawing.Size(818, 522);
             this.Controls.Add(this._carLPanel);
             this.Controls.Add(this._carRPanel);
             this.Controls.Add(this._comparePanel);
