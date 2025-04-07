@@ -13,21 +13,19 @@ namespace CarVision
 {
     public partial class login : Form
     {
-        string username = "admin";
+        string username = "ADMIN";
         string password = "admin";
 
         public login()
         {
             InitializeComponent();
             passwordBx.PasswordChar = '●';
-
-            passwordBx.Padding = new Padding(0, 15, 0, 0);
-            usernameBx.Padding = new Padding(0, 15, 0, 0);
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            if(usernameBx.Text == username && passwordBx.Text == password)
+
+            if(usernameBx.Text.ToUpper() == username && passwordBx.Text == password)
             {
                 CarVision carvision = new CarVision();
                 carvision.ShowDialog();
