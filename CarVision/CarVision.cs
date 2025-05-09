@@ -13,306 +13,381 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CarVision
 {
-    public partial class CarVision : Form
+public partial class CarVision : Form
+{
+    //BATTERY VALUES
+    private int battery;
+
+    private double activeDistance;
+    private double activeCapacity;
+    private double avgConsume;
+    //limits for car
+    private int maxDistanceL = 600;
+    private int maxBatteryKWHL = 100;
+    private int maxDistanceR = 500;
+    private int maxBatteryKWHR = 90;
+    //#
+    //ROUTE VALUES
+    private string firstCity = "";
+    private string secondCity = "";
+    private int distance = -1;
+
+    private int time = 0;
+    private int avgSpeed;
+
+    int[,] ranges = new int[,]
     {
-        private string firstCity = "";
-        private string secondCity = "";
-        //private int time = 0;
+        { 0, 70, 205, 30 }, // Praha
+        { 70, 0, 160, 105 }, // Kolín
+        { 205, 160, 0, 240 }, // Brno
+        { 30, 105, 240, 0 }  // Kladno
+    };
 
-        private int activeDistance;
-        private int distance = -1;
-        private int battery;
-        private float avgConsume;
+    int[,] timeline = new int[,]
+    {
+        { 0, 55, 120, 40 },  // Praha
+        { 55, 0, 115, 85 },  // Kolín
+        { 120, 115, 0, 140 }, // Brno
+        { 40, 85, 140, 0 }   // Kladno
+    };
 
+    string[] mesta = { "Praha", "Kolín", "Brno", "Kladno" };
+    //#
+    public CarVision()
+    {
+        InitializeComponent();
+        SwitchPanel(_carLPanel); //ODEBRAT S GRAFIKOU
+    }
 
-        //LIMITS
-        private int maxDistanceL = 600;
-        private int maxBatteryKWHL = 100;
+    private void carL_Click(object sender, EventArgs e)
+    {
+        SwitchPanel(_carLPanel);
+        blankAll();
+    }
 
-        private int maxDistanceR = 500;
-        private int maxBatteryKWHR = 90;
+    private void carR_Click(object sender, EventArgs e)
+    {
+        SwitchPanel(_carRPanel);
+        blankAll();
+    }
+    private void SwitchPanel(Panel panelToShow)
+    {
+        _carLPanel.Visible = false;
+        _carRPanel.Visible = false;
+        _comparePanel.Visible = false;
 
-        int[,] ranges = new int[,]
+        panelToShow.Visible = true;
+        panelToShow.BringToFront();
+    }
+    private void closeBtn_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
+
+    //ONLY NUMBERS in both batteryBX
+    private void batteryBx_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
         {
-            { 0, 70, 205, 30 }, // Praha
-            { 70, 0, 160, 105 }, // Kolín
-            { 205, 160, 0, 240 }, // Brno
-            { 30, 105, 240, 0 }  // Kladno
-        };
-        /*
-        int[,] timeline = new int[,]
-        {
-            { 0, 55, 120, 40 },  // Praha
-            { 55, 0, 115, 85 },  // Kolín
-            { 120, 115, 0, 140 }, // Brno
-            { 40, 85, 140, 0 }   // Kladno
-        };
-        */
-
-        string[] mesta = { "Praha", "Kolín", "Brno", "Kladno" };
-
-
-        public CarVision()
-        {
-            InitializeComponent();
+            e.Handled = true;
         }
+    }
 
-        private void carL_Click(object sender, EventArgs e)
+    private void destinationBtn_Click(object sender, EventArgs e)
+    {
+        if (_carLPanel.Visible)
         {
-            SwitchPanel(_carLPanel);
-            blankAll();
-        }
-
-        private void carR_Click(object sender, EventArgs e)
-        {
-            SwitchPanel(_carRPanel);
-            blankAll();
-        }
-        private void SwitchPanel(Panel panelToShow)
-        {
-            _carLPanel.Visible = false;
-            _carRPanel.Visible = false;
-            _comparePanel.Visible = false;
-
-            panelToShow.Visible = true;
-            panelToShow.BringToFront();
-        }
-        private void closeBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void batteryBx_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if (string.IsNullOrWhiteSpace(batteryL_Bx.Text))
             {
-                e.Handled = true;
-            }
-        }
-
-        private void destinationBtn_Click(object sender, EventArgs e)
-        {
-            _selectPanel.Visible = true;
-            _selectPanel.BringToFront();
-        }
-
-        private void btnCity_Click(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Button clickedButton = (System.Windows.Forms.Button)sender;
-
-            if (string.IsNullOrEmpty(firstCity))
-            {
-                firstCity = clickedButton.Text;
-                startLbl.Text = $"Start: {firstCity}";
+                MessageBox.Show("Write down the battery first (L)");
             }
             else
             {
-                secondCity = clickedButton.Text;
-                endLbl.Text = $"End: {secondCity}";
-
-                int startIndex = Array.IndexOf(mesta, firstCity);
-                int endIndex = Array.IndexOf(mesta, secondCity);
-                distance = ranges[startIndex, endIndex];
-                //time = timeline[startIndex, endIndex];
-
-                firstCity = "";
-                secondCity = "";
+                _selectPanel.Visible = true;
+                _selectPanel.BringToFront();
             }
         }
-        private void destinationSaveBtn_Click(object sender, EventArgs e)
+        //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
+        if (_carRPanel.Visible)
         {
-            _selectPanel.Visible = false;
-
-            if (_carLPanel.Visible)
+            if (string.IsNullOrWhiteSpace(batteryR_Bx.Text))
             {
-                /*Checking if filled*/
-                if (!string.IsNullOrWhiteSpace(batteryL_Bx.Text) && distance >= 0)
-                {
-                    activeDistance = (battery / 100) * maxDistanceL;
-                    avgConsume = distance * maxBatteryKWHL / maxDistanceL;
+                MessageBox.Show("Write down the battery first (R)");
+            }
+            else
+            {
+                _selectPanel.Visible = true;
+                _selectPanel.BringToFront();
+            }
+        }
+        //##########//##########//##########//##########//##########//##########//##########//##########//##########//
+    }
 
-                    consumeL_Lbl.Text = avgConsume.ToString() + " kWh";
+    private void btnCity_Click(object sender, EventArgs e)
+    {
+        System.Windows.Forms.Button clickedButton = (System.Windows.Forms.Button)sender;
 
-                    if ( distance > activeDistance )
-                    {
-                        MessageBox.Show("The battery is too low.");
-                        blankAll();
-                    }
-                }
-                else
+        if (string.IsNullOrEmpty(firstCity))
+        {
+            firstCity = clickedButton.Text;
+            startLbl.Text = $"Start: {firstCity}";
+        }
+        else
+        {
+            secondCity = clickedButton.Text;
+            endLbl.Text = $"End: {secondCity}";
+
+            int startIndex = Array.IndexOf(mesta, firstCity);
+            int endIndex = Array.IndexOf(mesta, secondCity);
+            distance = ranges[startIndex, endIndex];
+            time = timeline[startIndex, endIndex];
+
+            if (distance != 0 && distance != -1 && time != 0)
+            {
+                avgSpeed = distance / (time / 60);
+            }
+            else
+            {
+                MessageBox.Show("Fukmi");
+            }
+            firstCity = "";
+            secondCity = "";
+        }
+    }
+    private void destinationSaveBtn_Click(object sender, EventArgs e)
+    {
+        _selectPanel.Visible = false;
+        /////////
+        if (_carLPanel.Visible)
+        {
+            /*Checking if filled*/
+            if (distance > 0)
+            {
+                //Calculation of the Total Average Consumption
+                avgConsume = distance * maxBatteryKWHL / maxDistanceL;
+                //TEXT
+                consumeL_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
+
+                if (distance > activeDistance)
                 {
-                    MessageBox.Show("Please don't forget to enter battery percentage aswell as destination.");
+                    MessageBox.Show("Battery is insufficient for the trip. Please plan a charging stop along your route.");
+                    //blankAll();
                 }
             }
-            if (_carRPanel.Visible)
+            else if (distance == 0)
             {
-                if (!string.IsNullOrWhiteSpace(batteryR_Bx.Text) && distance >= 0)
-                {
-                    activeDistance = (  battery / 100   ) * maxDistanceR;
-                    avgConsume = distance * maxBatteryKWHR / maxDistanceR;
+                MessageBox.Show("Start/End share the same city, choose different city and start your journey!");
+            }
+            else
+            {
+                MessageBox.Show("Please note to enter destination.");
+            }
+        }
+        //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
+        if (_carRPanel.Visible)
+        {
+            if (distance > 0)
+            {
+                avgConsume = distance * maxBatteryKWHL / maxDistanceL;
+                consumeL_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
 
-                    consumeR_Lbl.Text = avgConsume.ToString() + " kWh";
-
-                    if ( distance > activeDistance )
-                    {
-                        MessageBox.Show("The battery is too low.");
-                        blankAll();
-                    }
-                }
-                else
+                if (distance > activeDistance)
                 {
-                    MessageBox.Show("Please don't forget to enter battery percentage aswell as destination.");
+                    MessageBox.Show("Battery is insufficient for the trip. Please plan a charging stop along your route.");
                 }
             }
-            
+            else if (distance == 0)
+            {
+                MessageBox.Show("Start/End share the same city, choose different city and start your journey!");
+            }
+            else
+            {
+                MessageBox.Show("Please note to enter destination.");
+            }
+        }
+        //##########//##########//##########//##########//##########//##########//##########//##########//##########//
+    }
+
+    private void blankAll()
+    {
+        consumeL_Lbl.Text = "";
+        batteryL_Bx.Text = "";
+        chargeL_Lbl.Text = "";
+        capacityL_Lbl.Text = "";
+        reachL_Lbl.Text = "";
+
+        consumeR_Lbl.Text = "";
+        batteryR_Bx.Text = "";
+        chargeR_Lbl.Text = "";
+        capacityR_Lbl.Text = "";
+        reachR_Lbl.Text = "";
+
+        distance = -1;
+        battery = 0;
+    }
+    private void batteryL_Bx_TextChanged(object sender, EventArgs e)
+    {
+        /*FOR THE LEFT CAR*/
+
+        // Limit to 3 characters
+        if (batteryL_Bx.Text.Length > 3)
+        {
+            batteryL_Bx.Text = batteryL_Bx.Text.Substring(0, 3);
         }
 
-        private void blankAll()
+        if (int.TryParse(batteryL_Bx.Text, out int valueR))
         {
-            consumeR_Lbl.Text = "";
-            batteryR_Bx.Text = "";
-            chargeR_Lbl.Text = "";
-            capacityR_Lbl.Text = "";
-            reachR_Lbl.Text = "";
+            battery = valueR; // Battery is now the valid int value
+            int rest = 100 - battery; // Remaining battery for charging
 
-            distance = -1;
-            battery = 0;
-        }
-
-        private void batteryR_Bx_TextChanged(object sender, EventArgs e)
-        {
-            /*FOR THE RIGHT CAR*/
-
-            if (batteryR_Bx.Text.Length > 3)
+            // Check if the battery exceeds 100, reset to 100
+            if (battery > 100)
             {
-                batteryR_Bx.Text = batteryR_Bx.Text.Substring(0, 3);
-                batteryR_Bx.SelectionStart = batteryR_Bx.Text.Length;
+                battery = 100;
+                batteryL_Bx.Text = "100";
             }
 
-            if (int.TryParse(batteryR_Bx.Text, out int valueR))
+            // Calculate the Total range
+            activeDistance = (battery / 100.0) * maxDistanceL; // float integer issue integer / integer = 0
+            // TEXT
+            reachL_Lbl.Text = activeDistance.ToString() + " km";
+
+            // Calculate the Total Battery Capacity
+            activeCapacity = ((battery / 100.0) * maxBatteryKWHL);
+            //TEXT
+            capacityL_Lbl.Text = activeCapacity.ToString() + " kWh";
+
+            // Calculate the Total Recharge Time
+            if (battery < 100) // Battery is not full, need to charge
             {
-
-                activeDistance = (battery / 100) * maxDistanceR;
-                battery = int.Parse(batteryR_Bx.Text);
-                int rest = 100 - int.Parse(batteryR_Bx.Text);
-
-                if (valueR > 100)
-                {
-                    batteryR_Bx.Text = "100";
-                }
-
-                /*Checking if filled*/
-                if (!string.IsNullOrWhiteSpace(batteryR_Bx.Text) && distance >= 0)
-                {
-                    avgConsume = distance * maxBatteryKWHR / maxDistanceR;
-                    consumeR_Lbl.Text = avgConsume.ToString() + " kWh";
-                }
-
-                /*Celkový dojezd*/
-                reachR_Lbl.Text = activeDistance.ToString("F2") + " km";
-
-                /*Kapacita baterie*/
-                capacityR_Lbl.Text = (  (battery / 100) * maxBatteryKWHR    ).ToString("F2") + " kWh";
-
-
-                /*Čas nabití*/
                 if (battery <= 50)
                 {
-                    chargeR_Lbl.Text = ((((50 - int.Parse(batteryR_Bx.Text)) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
+                    //TEXT
+                    chargeL_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else if (battery <= 80)
                 {
-                    chargeR_Lbl.Text = ((((80 - int.Parse(batteryR_Bx.Text)) * 30) + (20 * 36)) / 60).ToString() + " min";
+                    //TEXT
+                    chargeL_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else
                 {
-                    chargeR_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                    if (rest <= 3) // Battery is almost full, value with a little imprecision
+                    {
+                        //TEXT
+                        chargeL_Lbl.Text = "<1 min";
+                    }
+                    else
+                    {
+                        //TEXT
+                        chargeL_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                    }
                 }
             }
             else
             {
-                batteryR_Bx.Text = "";
+                //TEXT
+                chargeL_Lbl.Text = "Full"; // Battery is full, no need to charge
             }
         }
-
-        private void batteryR_Bx_Leave(object sender, EventArgs e)
+        else
         {
-            if (!string.IsNullOrWhiteSpace(batteryR_Bx.Text) && distance >= 0)
-            {
-                if (distance > activeDistance)
-                {
-                    MessageBox.Show("The battery is too low.");
-                    blankAll();
-                }
-            }
+            //TEXT
+            batteryL_Bx.Text = ""; // Invalid input, reset the field
+            blankAll();
+        }
+    }
+    
+    //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
+    private void batteryR_Bx_TextChanged(object sender, EventArgs e)
+    {
+        /*FOR THE RIGHT CAR*/
+
+        if (batteryR_Bx.Text.Length > 3)
+        {
+            batteryR_Bx.Text = batteryR_Bx.Text.Substring(0, 3);
         }
 
-        private void batteryL_Bx_TextChanged(object sender, EventArgs e)
+        if (int.TryParse(batteryR_Bx.Text, out int valueR))
         {
-            /*FOR THE LEFT CAR*/
+            battery = valueR; // Battery is now the valid int value
+            int rest = 100 - battery; // Remaining battery for charging
 
-            if (batteryL_Bx.Text.Length > 3)
+            // Check if the battery exceeds 100, reset to 100
+            if (battery > 100)
             {
-                batteryL_Bx.Text = batteryL_Bx.Text.Substring(0, 3);
-                batteryL_Bx.SelectionStart = batteryL_Bx.Text.Length;
+                battery = 100;
+                batteryR_Bx.Text = "100";
             }
 
-            if (int.TryParse(batteryL_Bx.Text, out int valueR))
+            // Calculate the Total range
+            activeDistance = (battery / 100.0) * maxDistanceR; // float integer issue integer / integer = 0
+                                                                // TEXT
+            reachR_Lbl.Text = activeDistance.ToString() + " km";
+
+            // Calculate the Total Battery Capacity
+            activeCapacity = ((battery / 100.0) * maxBatteryKWHR);
+            //TEXT
+            capacityR_Lbl.Text = activeCapacity.ToString() + " kWh";
+
+            // Calculate the Total Recharge Time
+            if (battery < 100) // Battery is not full, need to charge
             {
-                battery = int.Parse(batteryL_Bx.Text);
-                activeDistance = (battery / 100) * maxDistanceL;
-                int rest = 100 - int.Parse(batteryL_Bx.Text);
-
-                // CHANGES higher VALUES IN battery
-                if (valueR > 100)
-                {
-                    batteryL_Bx.Text = "100";
-                }
-
-                /*Checking if filled*/
-                if (distance >= 0)
-                {
-                    avgConsume = distance * maxBatteryKWHL / maxDistanceL;
-
-                    consumeL_Lbl.Text = avgConsume.ToString() + " kWh";
-                }
-
-                /*Celkový dojezd*/
-                reachL_Lbl.Text = activeDistance.ToString("F2") + " km";
-
-                /*Kapacita baterie*/
-                capacityL_Lbl.Text = (  ( battery / 100) * maxBatteryKWHL   ).ToString("F2") + " kWh";
-
-
-                /*Čas nabití*/
                 if (battery <= 50)
                 {
-                    chargeL_Lbl.Text = ((((50 - int.Parse(batteryL_Bx.Text)) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
+                    //TEXT
+                    chargeL_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else if (battery <= 80)
                 {
-                    chargeL_Lbl.Text = ((((80 - int.Parse(batteryL_Bx.Text)) * 30) + (20 * 36)) / 60).ToString() + " min";
+                    //TEXT
+                    chargeL_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else
                 {
-                    chargeL_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                    if (rest <= 3) // Battery is almost full, value with a little imprecision
+                    {
+                        //TEXT
+                        chargeL_Lbl.Text = "<1 min";
+                    }
+                    else
+                    {
+                        //TEXT
+                        chargeL_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                    }
                 }
             }
-            else {
-                batteryL_Bx.Text = "";
+            else
+            {
+                //TEXT
+                chargeL_Lbl.Text = "Full"; // Battery is full, no need to charge
             }
         }
-
-        private void batteryL_Bx_Leave(object sender, EventArgs e)
+        else
         {
-            if (!string.IsNullOrWhiteSpace(batteryL_Bx.Text) && distance >= 0)
+            //TEXT
+            batteryL_Bx.Text = ""; // Invalid input, reset the field
+            blankAll();
+        }
+    }
+
+    private void batteryR_Bx_Leave(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(batteryR_Bx.Text) && distance >= 0)
+        {
+            if (distance > activeDistance)
             {
-                if (distance > activeDistance)
-                {
-                    MessageBox.Show("The battery is too low.");
-                    blankAll();
-                }
+                MessageBox.Show("The battery is too low.");
+                blankAll();
             }
         }
     }
-}
+        //##########//##########//##########//##########//##########//##########//##########//##########//##########//
+
+        //TROUBLES
+        // Only if 100 % battery - dojezd, kapacita
+        // avgConsume in 600 kWh
+
+        // DONE
+        // charging time considers 3 input values above 100 (etc. 555, 999) - goes to negative charging time values
+} }

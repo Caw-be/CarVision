@@ -1,22 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\",
+  "WorkspaceRootPath": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|c:\\_programovani\\%3ta\\carvision\\carvision\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|C:\\_programovani\\%3TA\\CarVision\\CarVision\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|C:\\_programovani\\%3TA\\CarVision\\CarVision\\carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|solutionrelative:carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|C:\\_programovani\\%3TA\\CarVision\\CarVision\\carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|solutionrelative:carvision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|c:\\users\\work\\onedrive - so\u0161 informatiky a spoj\u016F a sou kol\u00EDn\\_prg\\automobil\\git-project\\carvision\\carvision\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D872CF08-F50B-435B-B5E3-08F6CAC2047B}|CarVision.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,53 +26,40 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "login.cs",
-              "DocumentMoniker": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\login.cs",
+              "DocumentIndex": 2,
+              "Title": "login.cs [N\u00E1vrh]",
+              "DocumentMoniker": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\login.cs",
               "RelativeDocumentMoniker": "login.cs",
-              "ToolTip": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\login.cs",
-              "RelativeToolTip": "login.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwB4AAAANAAAA",
+              "ToolTip": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\login.cs [N\u00E1vrh]",
+              "RelativeToolTip": "login.cs [N\u00E1vrh]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T18:07:34.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-08T14:20:08.915Z",
+              "EditorCaption": " [N\u00E1vrh]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "login.cs [Design]",
-              "DocumentMoniker": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\login.cs",
-              "RelativeDocumentMoniker": "login.cs",
-              "ToolTip": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\login.cs [Design]",
-              "RelativeToolTip": "login.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-02T16:31:34.556Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "CarVision.cs",
-              "DocumentMoniker": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\CarVision.cs",
+              "DocumentMoniker": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\CarVision.cs",
               "RelativeDocumentMoniker": "CarVision.cs",
-              "ToolTip": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\CarVision.cs",
+              "ToolTip": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\CarVision.cs",
               "RelativeToolTip": "CarVision.cs",
-              "ViewState": "AQIAAIsAAAAAAAAAAAAYwJkAAABHAAAA",
+              "ViewState": "AgIAANMAAABgZ2ZmZmYwwEMBAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T18:06:10.914Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CarVision.cs [Design]",
-              "DocumentMoniker": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\CarVision.cs",
+              "DocumentIndex": 1,
+              "Title": "CarVision.cs [N\u00E1vrh]",
+              "DocumentMoniker": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\CarVision.cs",
               "RelativeDocumentMoniker": "CarVision.cs",
-              "ToolTip": "C:\\_programovani\\%3TA\\CarVision\\CarVision\\CarVision.cs [Design]",
-              "RelativeToolTip": "CarVision.cs [Design]",
+              "ToolTip": "C:\\Users\\Work\\OneDrive - SO\u0160 informatiky a spoj\u016F a SOU Kol\u00EDn\\_PRG\\Automobil\\git-project\\CarVision\\CarVision\\CarVision.cs [N\u00E1vrh]",
+              "RelativeToolTip": "CarVision.cs [N\u00E1vrh]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-02T16:31:33.297Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [N\u00E1vrh]"
             }
           ]
         }
