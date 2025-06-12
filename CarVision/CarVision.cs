@@ -33,7 +33,7 @@ public partial class CarVision : Form
     private int distance = -1;
 
     private int time = 0;
-    private int avgSpeed;
+    private double avgSpeed;
 
     int[,] ranges = new int[,]
     {
@@ -56,25 +56,24 @@ public partial class CarVision : Form
     public CarVision()
     {
         InitializeComponent();
-        SwitchPanel(_carLPanel); //ODEBRAT S GRAFIKOU
+        SwitchPanel(_Taycan);  //ODEBRAT S GRAFIKOU
     }
 
     private void carL_Click(object sender, EventArgs e)
     {
-        SwitchPanel(_carLPanel);
+        SwitchPanel(_Taycan);
         blankAll();
     }
 
     private void carR_Click(object sender, EventArgs e)
     {
-        SwitchPanel(_carRPanel);
+        SwitchPanel(_Nevera);
         blankAll();
     }
     private void SwitchPanel(Panel panelToShow)
     {
-        _carLPanel.Visible = false;
-        _carRPanel.Visible = false;
-        _comparePanel.Visible = false;
+        _Taycan.Visible = false;
+        _Nevera.Visible = false;
 
         panelToShow.Visible = true;
         panelToShow.BringToFront();
@@ -95,30 +94,30 @@ public partial class CarVision : Form
 
     private void destinationBtn_Click(object sender, EventArgs e)
     {
-        if (_carLPanel.Visible)
+        if (_Taycan.Visible)
         {
-            if (string.IsNullOrWhiteSpace(batteryL_Bx.Text))
-            {
-                MessageBox.Show("Write down the battery first (L)");
+                if (battery > 0)
+                {
+                    _Destinace.Visible = true;
+                    _Destinace.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Write down the battery first (Taycan)");
+                }
             }
-            else
-            {
-                _selectPanel.Visible = true;
-                _selectPanel.BringToFront();
-            }
-        }
         //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
-        if (_carRPanel.Visible)
+        if (_Nevera.Visible)
         {
-            if (string.IsNullOrWhiteSpace(batteryR_Bx.Text))
+            if (battery > 0)
             {
-                MessageBox.Show("Write down the battery first (R)");
+                    _Destinace.Visible = true;
+                    _Destinace.BringToFront();
             }
             else
-            {
-                _selectPanel.Visible = true;
-                _selectPanel.BringToFront();
-            }
+             {
+                    MessageBox.Show("Write down the battery first (Nevera)");
+             }
         }
         //##########//##########//##########//##########//##########//##########//##########//##########//##########//
     }
@@ -130,12 +129,12 @@ public partial class CarVision : Form
         if (string.IsNullOrEmpty(firstCity))
         {
             firstCity = clickedButton.Text;
-            startLbl.Text = $"Start: {firstCity}";
+            Destinace_Start_Lbl.Text = $"Start: {firstCity}";
         }
         else
         {
             secondCity = clickedButton.Text;
-            endLbl.Text = $"End: {secondCity}";
+            Destinace_End_Lbl.Text = $"End: {secondCity}";
 
             int startIndex = Array.IndexOf(mesta, firstCity);
             int endIndex = Array.IndexOf(mesta, secondCity);
@@ -144,7 +143,7 @@ public partial class CarVision : Form
 
             if (distance != 0 && distance != -1 && time != 0)
             {
-                avgSpeed = distance / (time / 60);
+                avgSpeed = distance / (double)(time / 60);
             }
             else
             {
@@ -156,9 +155,9 @@ public partial class CarVision : Form
     }
     private void destinationSaveBtn_Click(object sender, EventArgs e)
     {
-        _selectPanel.Visible = false;
+        _Destinace.Visible = false;
         /////////
-        if (_carLPanel.Visible)
+        if (_Taycan.Visible)
         {
             /*Checking if filled*/
             if (distance > 0)
@@ -166,7 +165,7 @@ public partial class CarVision : Form
                 //Calculation of the Total Average Consumption
                 avgConsume = distance * maxBatteryKWHL / maxDistanceL;
                 //TEXT
-                consumeL_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
+                Taycan_consume_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
 
                 if (distance > activeDistance)
                 {
@@ -184,12 +183,12 @@ public partial class CarVision : Form
             }
         }
         //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
-        if (_carRPanel.Visible)
+        if (_Nevera.Visible)
         {
             if (distance > 0)
             {
                 avgConsume = distance * maxBatteryKWHL / maxDistanceL;
-                consumeL_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
+                Nevera_consume_Lbl.Text = avgConsume.ToString() + " kWh / 100 km";
 
                 if (distance > activeDistance)
                 {
@@ -210,17 +209,17 @@ public partial class CarVision : Form
 
     private void blankAll()
     {
-        consumeL_Lbl.Text = "";
-        batteryL_Bx.Text = "";
-        chargeL_Lbl.Text = "";
-        capacityL_Lbl.Text = "";
-        reachL_Lbl.Text = "";
+        Taycan_consume_Lbl.Text = "n/a";
+        Taycan_Battery_Bx.Text = "";
+        Taycan_charge_Lbl.Text = "";
+        Taycan_capacity_Lbl.Text = "";
+        Taycan_reach_Lbl.Text = "n/a";
 
-        consumeR_Lbl.Text = "";
-        batteryR_Bx.Text = "";
-        chargeR_Lbl.Text = "";
-        capacityR_Lbl.Text = "";
-        reachR_Lbl.Text = "";
+        Nevera_consume_Lbl.Text = "n/a";
+        Nevera_Battery_Bx.Text = "";
+        Nevera_charge_Lbl.Text = "";
+        Nevera_capacity_Lbl.Text = "";
+        Nevera_reach_Lbl.Text = "n/a";
 
         distance = -1;
         battery = 0;
@@ -230,12 +229,12 @@ public partial class CarVision : Form
         /*FOR THE LEFT CAR*/
 
         // Limit to 3 characters
-        if (batteryL_Bx.Text.Length > 3)
+        if (Taycan_Battery_Bx.Text.Length > 3)
         {
-            batteryL_Bx.Text = batteryL_Bx.Text.Substring(0, 3);
+            Taycan_Battery_Bx.Text = Taycan_Battery_Bx.Text.Substring(0, 3);
         }
 
-        if (int.TryParse(batteryL_Bx.Text, out int valueR))
+        if (int.TryParse(Taycan_Battery_Bx.Text, out int valueR))
         {
             battery = valueR; // Battery is now the valid int value
             int rest = 100 - battery; // Remaining battery for charging
@@ -244,18 +243,18 @@ public partial class CarVision : Form
             if (battery > 100)
             {
                 battery = 100;
-                batteryL_Bx.Text = "100";
+                Taycan_Battery_Bx.Text = "100";
             }
 
             // Calculate the Total range
             activeDistance = (battery / 100.0) * maxDistanceL; // float integer issue integer / integer = 0
             // TEXT
-            reachL_Lbl.Text = activeDistance.ToString() + " km";
+            Taycan_reach_Lbl.Text = activeDistance.ToString() + " km";
 
             // Calculate the Total Battery Capacity
             activeCapacity = ((battery / 100.0) * maxBatteryKWHL);
             //TEXT
-            capacityL_Lbl.Text = activeCapacity.ToString() + " kWh";
+            Taycan_capacity_Lbl.Text = activeCapacity.ToString() + " kWh";
 
             // Calculate the Total Recharge Time
             if (battery < 100) // Battery is not full, need to charge
@@ -263,37 +262,37 @@ public partial class CarVision : Form
                 if (battery <= 50)
                 {
                     //TEXT
-                    chargeL_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
+                    Taycan_charge_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else if (battery <= 80)
                 {
                     //TEXT
-                    chargeL_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
+                    Taycan_charge_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
                 }
                 else
                 {
                     if (rest <= 3) // Battery is almost full, value with a little imprecision
                     {
                         //TEXT
-                        chargeL_Lbl.Text = "<1 min";
+                        Taycan_charge_Lbl.Text = "<1 min";
                     }
                     else
                     {
                         //TEXT
-                        chargeL_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                        Taycan_charge_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
                     }
                 }
             }
             else
             {
                 //TEXT
-                chargeL_Lbl.Text = "Full"; // Battery is full, no need to charge
+                Taycan_charge_Lbl.Text = "Full"; // Battery is full, no need to charge
             }
         }
         else
         {
             //TEXT
-            batteryL_Bx.Text = ""; // Invalid input, reset the field
+            Taycan_Battery_Bx.Text = ""; // Invalid input, reset the field
             blankAll();
         }
     }
@@ -301,79 +300,80 @@ public partial class CarVision : Form
     //---------//---------//---------//---------//---------//---------//---------//---------//---------//---------
     private void batteryR_Bx_TextChanged(object sender, EventArgs e)
     {
-        /*FOR THE RIGHT CAR*/
+            /*FOR THE LEFT CAR*/
 
-        if (batteryR_Bx.Text.Length > 3)
-        {
-            batteryR_Bx.Text = batteryR_Bx.Text.Substring(0, 3);
-        }
-
-        if (int.TryParse(batteryR_Bx.Text, out int valueR))
-        {
-            battery = valueR; // Battery is now the valid int value
-            int rest = 100 - battery; // Remaining battery for charging
-
-            // Check if the battery exceeds 100, reset to 100
-            if (battery > 100)
+            // Limit to 3 characters
+            if (Nevera_Battery_Bx.Text.Length > 3)
             {
-                battery = 100;
-                batteryR_Bx.Text = "100";
+                Nevera_Battery_Bx.Text = Nevera_Battery_Bx.Text.Substring(0, 3);
             }
 
-            // Calculate the Total range
-            activeDistance = (battery / 100.0) * maxDistanceR; // float integer issue integer / integer = 0
-                                                                // TEXT
-            reachR_Lbl.Text = activeDistance.ToString() + " km";
-
-            // Calculate the Total Battery Capacity
-            activeCapacity = ((battery / 100.0) * maxBatteryKWHR);
-            //TEXT
-            capacityR_Lbl.Text = activeCapacity.ToString() + " kWh";
-
-            // Calculate the Total Recharge Time
-            if (battery < 100) // Battery is not full, need to charge
+            if (int.TryParse(Nevera_Battery_Bx.Text, out int valueR))
             {
-                if (battery <= 50)
+                battery = valueR; // Battery is now the valid int value
+                int rest = 100 - battery; // Remaining battery for charging
+
+                // Check if the battery exceeds 100, reset to 100
+                if (battery > 100)
                 {
-                    //TEXT
-                    chargeL_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
+                    battery = 100;
+                    Nevera_Battery_Bx.Text = "100";
                 }
-                else if (battery <= 80)
+
+                // Calculate the Total range
+                activeDistance = (battery / 100.0) * maxDistanceL; // float integer issue integer / integer = 0
+                                                                   // TEXT
+                Nevera_reach_Lbl.Text = activeDistance.ToString() + " km";
+
+                // Calculate the Total Battery Capacity
+                activeCapacity = ((battery / 100.0) * maxBatteryKWHL);
+                //TEXT
+                Nevera_capacity_Lbl.Text = activeCapacity.ToString() + " kWh";
+
+                // Calculate the Total Recharge Time
+                if (battery < 100) // Battery is not full, need to charge
                 {
-                    //TEXT
-                    chargeL_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
-                }
-                else
-                {
-                    if (rest <= 3) // Battery is almost full, value with a little imprecision
+                    if (battery <= 50)
                     {
                         //TEXT
-                        chargeL_Lbl.Text = "<1 min";
+                        Nevera_charge_Lbl.Text = Math.Round((((50 - battery) * 19.2) + (30 * 30) + (20 * 36)) / 60).ToString() + " min";
+                    }
+                    else if (battery <= 80)
+                    {
+                        //TEXT
+                        Nevera_charge_Lbl.Text = ((((80 - battery) * 30) + (20 * 36)) / 60).ToString() + " min";
                     }
                     else
                     {
-                        //TEXT
-                        chargeL_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                        if (rest <= 3) // Battery is almost full, value with a little imprecision
+                        {
+                            //TEXT
+                            Nevera_charge_Lbl.Text = "<1 min";
+                        }
+                        else
+                        {
+                            //TEXT
+                            Nevera_charge_Lbl.Text = (((rest * 36)) / 60).ToString() + " min";
+                        }
                     }
+                }
+                else
+                {
+                    //TEXT
+                    Nevera_charge_Lbl.Text = "Full"; // Battery is full, no need to charge
                 }
             }
             else
             {
                 //TEXT
-                chargeL_Lbl.Text = "Full"; // Battery is full, no need to charge
+                Nevera_Battery_Bx.Text = ""; // Invalid input, reset the field
+                blankAll();
             }
         }
-        else
-        {
-            //TEXT
-            batteryL_Bx.Text = ""; // Invalid input, reset the field
-            blankAll();
-        }
-    }
 
     private void batteryR_Bx_Leave(object sender, EventArgs e)
     {
-        if (!string.IsNullOrWhiteSpace(batteryR_Bx.Text) && distance >= 0)
+        if (!string.IsNullOrWhiteSpace(Nevera_Battery_Bx.Text) && distance >= 0)
         {
             if (distance > activeDistance)
             {
@@ -382,6 +382,29 @@ public partial class CarVision : Form
             }
         }
     }
+        private void Nevera_Battery_Btn_Click(object sender, EventArgs e)
+        {
+            battery = int.Parse(Nevera_Battery_Bx.Text);
+            label6.Text = "Stav baterie: ";
+
+            Nevera_Battery.Text = battery.ToString();
+            Nevera_Battery.Visible = true;
+
+            Nevera_Battery_Bx.Visible = false;
+            Nevera_Battery_Btn.Visible = false;
+        }
+
+        private void Taycan_Battery_Btn_Click(object sender, EventArgs e)
+        {
+            battery = int.Parse(Taycan_Battery_Bx.Text);
+            label6.Text = "Stav baterie: ";
+
+            Taycan_Battery.Text = battery.ToString();
+            Taycan_Battery.Visible = true;
+
+            Taycan_Battery_Bx.Visible = false;
+            Taycan_Battery_Btn.Visible = false;
+        }
         //##########//##########//##########//##########//##########//##########//##########//##########//##########//
 
         //TROUBLES
@@ -390,4 +413,4 @@ public partial class CarVision : Form
 
         // DONE
         // charging time considers 3 input values above 100 (etc. 555, 999) - goes to negative charging time values
-} }
+    } }

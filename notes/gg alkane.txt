@@ -1,0 +1,6 @@
+intro animace
+jpg auta - dobijeni, zmena auta, destinace, textbox baterie - button potvrdit, pak jen label s %
+
+dobijeni - dobiti animace, jpg auta / dobiti auta, back btn, current battery
+destinace - 4 button karty (mesta - Praha, Brno, Kladno, Kolin), start/end a summary celkovych km a battery dropdown, back btn, potvrdit (battery dropdown = true)
+jine auto - from blue/green out animace

@@ -98,5 +98,17 @@
   <ItemGroup>
     <None Include="Resources\ferari.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nevera.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Taycan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Šipka na switch aut leva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Šipka na switch aut prava.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,16 @@
+user battery
+vypocita dobiti, celkovy dojezd, kapacitu baterie
+
+//^DONE^##
+
+vyberte destinaci -> hotovo
+odecte spotřebu baterie od user battery - 
+
+aktualizuje dojezd, kapacitu, dobiti a vypocita spotřebu
+
+První cesta - libovolný start/konec
+Další - start z předchozí cesty a konec zvolí uživatel
+Stejne města => nacházet se MessageBox
+Malo baterie na cestu => spočítat ujete km a ulozit zbyvajici + baterii kterou potřebuje na dojezd k destinaci, vypočítat skrz baterii a dojezd trojčlenku. Nasledne vyskoci popup kolik potřebuje baterky a nabidne se mu skrz MessageBox dobit baterku, klikne na OK (note: nemůže dat možnost NO) tak se mu baterie dobije a dojede do destinace.
+
+Baterie lock after typing in?

@@ -53,3 +53,14 @@ C:\Users\Work\OneDrive - SOŠ informatiky a spojů a SOU Kolín\_PRG\Automobil\g
 C:\Users\Work\OneDrive - SOŠ informatiky a spojů a SOU Kolín\_PRG\Automobil\git-project\CarVision\CarVision\obj\Debug\CarVision.csproj.CoreCompileInputs.cache
 C:\Users\Work\OneDrive - SOŠ informatiky a spojů a SOU Kolín\_PRG\Automobil\git-project\CarVision\CarVision\obj\Debug\CarVision.exe
 C:\Users\Work\OneDrive - SOŠ informatiky a spojů a SOU Kolín\_PRG\Automobil\git-project\CarVision\CarVision\obj\Debug\CarVision.pdb
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\bin\Debug\CarVision.exe.config
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\bin\Debug\CarVision.exe
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\bin\Debug\CarVision.pdb
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.csproj.AssemblyReference.cache
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.CarVision.resources
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.login.resources
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.Properties.Resources.resources
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.csproj.GenerateResource.cache
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.csproj.CoreCompileInputs.cache
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.exe
+C:\Users\David\OneDrive - SOŠ informatiky a SOU Kolín\_PRG\Automobil\CarVision\CarVision\obj\Debug\CarVision.pdb
