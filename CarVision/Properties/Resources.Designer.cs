@@ -63,6 +63,16 @@ namespace CarVision.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Brno_button {
+            get {
+                object obj = ResourceManager.GetObject("Brno button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BUTTON {
             get {
                 object obj = ResourceManager.GetObject("BUTTON", resourceCulture);
@@ -83,6 +93,16 @@ namespace CarVision.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Datový_zdroj_12 {
+            get {
+                object obj = ResourceManager.GetObject("Datový zdroj 12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ferari {
             get {
                 object obj = ResourceManager.GetObject("ferari", resourceCulture);
@@ -93,9 +113,49 @@ namespace CarVision.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Kladno_button {
+            get {
+                object obj = ResourceManager.GetObject("Kladno button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Kolín_button {
+            get {
+                object obj = ResourceManager.GetObject("Kolín button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Nevera {
             get {
                 object obj = ResourceManager.GetObject("Nevera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Nevera_charge {
+            get {
+                object obj = ResourceManager.GetObject("Nevera-charge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Praha_button {
+            get {
+                object obj = ResourceManager.GetObject("Praha button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +186,16 @@ namespace CarVision.Properties {
         internal static System.Drawing.Bitmap Taycan {
             get {
                 object obj = ResourceManager.GetObject("Taycan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Taycan_charge {
+            get {
+                object obj = ResourceManager.GetObject("Taycan-charge", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

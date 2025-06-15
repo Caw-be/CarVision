@@ -110,5 +110,17 @@
   <ItemGroup>
     <None Include="Resources\Šipka na switch aut prava.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Praha button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Brno button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kolín button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kladno button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -118,25 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Car" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Car.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Nevera" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Nevera.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Taycan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Taycan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ferari" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ferari.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Nevera-charge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\grafika\Nevera\Nevera-charge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BUTTON" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BUTTON.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Car" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Car.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Šipka na switch aut prava" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Šipka na switch aut prava.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Praha button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Praha button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Datový zdroj 12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Datový zdroj 12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Šipka na switch aut leva" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Šipka na switch aut leva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Šipka na switch aut prava" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Šipka na switch aut prava.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Kolín button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kolín button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BUTTON" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BUTTON.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Brno button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Brno button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Taycan-charge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\grafika\Taycan\Taycan-charge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Nevera" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nevera.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ferari" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ferari.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kladno button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kladno button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
